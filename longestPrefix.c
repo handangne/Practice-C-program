@@ -5,13 +5,12 @@
 char* commonPrefixUtil(char* str1, char* str2)
 {
 	char* result;
-    result = (char*)malloc(100 * sizeof(char));
-	int len = strlen(str1) < strlen(str2) ? strlen(str1)
-										: strlen(str2);
-
-	for (int i = 0; i < len; i++) {
+	result = (char*)malloc(100 * sizeof(char));
+	int len = strlen(str1) < strlen(str2) ? strlen(str1): strlen(str2);
+	for (int i = 0; i < len; i++)
+	{
 		if (str1[i] != str2[i])
-			break;
+		break;
 		result[i] = str1[i];
 	}
 
@@ -23,7 +22,8 @@ char* commonPrefix(char* arr[], int n)
 {
 	char* prefix = arr[0];
 
-	for (int i = 1; i < n; i++) {
+	for (int i = 1; i < n; i++)
+	{
 		prefix = commonPrefixUtil(prefix, arr[i]);
 	}
 	return prefix;
@@ -32,12 +32,12 @@ char* commonPrefix(char* arr[], int n)
 int main()
 {
 	char* arr1[] = { "abc", "abd", "abf" };
-  char* arr2[] = { "ha", "ma", "ca" };
+	char* arr2[] = { "ha", "ma", "ca" };
 	int n1 = sizeof(arr1) / sizeof(arr1[0]);
-    int n2 = sizeof(arr2) / sizeof(arr2[0]);
+	int n2 = sizeof(arr2) / sizeof(arr2[0]);
 
 	char* ans1 = commonPrefix(arr1, n1);
-    char* ans2 = commonPrefix(arr2, n2);
+	char* ans2 = commonPrefix(arr2, n2);
 
 	if (strlen(ans1))
 		printf("The longest common prefix is - %s", ans1);
@@ -45,12 +45,11 @@ int main()
 		printf("\nThere is no common prefix");
 
 	free(ans1);
-    //no prefix
-    if (strlen(ans2))
+	//no prefix
+	if (strlen(ans2))
 		printf("The longest common prefix is - %s", ans2);
 	else
-		printf("\nThere is no common prefix");
-
+	printf("\nThere is no common prefix");
 	free(ans2);
 
 	return 0;
