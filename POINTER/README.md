@@ -23,6 +23,7 @@ int*yptr;
 ```
 - Assigning address to pointers
 ```C
+//example 1
 #include<stdio.h>
 int main()
 {
@@ -44,6 +45,19 @@ int main()
   printf ("(10)The address of q: %p\n", &q); //0x16dae73e0
   return 0;
 }
+//example 2
+#include <stdio.h>
+int main()
+{
+  int x = 4;
+  int* pX = &x; //integer pointer named pX is set to the address of x
+  printf ("%p\n", pX); //print the address of x
+  printf ("%d\n", *pX); //print the value of x
+  printf ("%p\n", &x); //print the address of x
+  int y = *pX; //integer named y is set to the thing pointed to by pX, which is actually the value of x.
+  printf ("%d", y);
+  return 0;
+}
 ```
 - The complements of "*" and "&"
 ```C
@@ -60,3 +74,103 @@ int main()
   return 0;
 }
 ```
+
+*** SWAP VALUE AND POINTER
+- When swapping the value of variables, their pointers still remained the same as before
+```C
+//example 1
+#include <stdio.h>
+int main()
+{
+  int x, *p;
+  x = 9;
+  p = &x; //&a is the address of a
+  printf ("Address of p is: %p\n", p);
+  printf ("Value at p is: %d\n", *p);
+  int y;
+  y = 20;
+  *p = y;
+  printf ("Address of p is: %p\n", p);
+  printf ("Value at p is: %d\n", *p);
+  //only the value at p changed, but the pointer is still poiting to x
+  return 0;
+}
+/*
+Address of p is: 0x16ba0f3f8
+Value at p is: 9
+Address of p is: 0x16ba0f3f8
+Value at p is: 20
+*/
+
+//example 2: swapValues (int*a, int*b)
+#include <stdio.h>
+int main()
+{
+  int x,y;
+  x = 5;
+  y = 10;
+  int*a, *b;
+  a = &x;
+  b = &y;
+  printf ("Value of x: %d\n", *a); 
+  printf ("Value of y: %d\n", *b);
+  int temp = *a;
+  *a = *b;
+  *b = temp;
+  printf ("Value of x: %d\n", *a); //swap value between a and b
+  printf ("Value of y: %d\n", *b);
+  return 0;
+}
+/*
+Value of x: 5
+Value of y: 10
+Value of x: 10
+Value of y: 5
+*/
+
+//example 3: swapValue (int*a, int*b, int*c)
+#include <stdio.h>
+int main()
+{
+  int x,y,z;
+  x = 5;
+  y = 10;
+  z = 20;
+  int*a, *b, *c;
+  a = &x;
+  b = &y;
+  c = &z;
+  printf ("Value of x: %d\n", *a);
+  printf ("Value of y: %d\n", *b);
+  printf ("Value of z: %d\n", *c);
+  printf ("Address of x: %p\n", a);
+  printf ("Address of y: %p\n", b);
+  printf ("Address of z: %p\n", c);
+  int temp = *a;
+  *a = *b;
+  *b = *c;
+  *c = temp;
+  printf ("Value of x: %d\n", *a);
+  printf ("Value of y: %d\n", *b);
+  printf ("Value of z: %d\n", *c);
+  printf ("Address of x: %p\n", a);
+  printf ("Address of y: %p\n", b);
+  printf ("Address of z: %p\n", c);
+  return 0;
+}
+/*
+Value of x: 5
+Value of y: 10
+Value of z: 20
+Address of x: 0x16fbbf3f8
+Address of y: 0x16fbbf3f4
+Address of z: 0x16fbbf3f0
+Value of x: 10
+Value of y: 20
+Value of z: 5
+Address of x: 0x16fbbf3f8
+Address of y: 0x16fbbf3f4
+Address of z: 0x16fbbf3f0
+*/
+```
+
