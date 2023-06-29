@@ -1,103 +1,134 @@
 #include <stdio.h>
-#include <time.h>
 #include <stdlib.h>
-#include <math.h>
+#include <time.h>
 
-void yourChoice (int);
-void compChoice (int);
-void result (int, int);
-void finalResult (int);
-
-void yourChoice (int y)
+void userMove (int user)
 {
-    printf ("1 for STONE.\n");
-    printf ("2 for PAPER.\n");
-    printf ("3 for SCISSOR.\n");
-    printf ("Enter your choice:\n");
-    scanf ("%d", &y);
-    printf ("------------------------\n");
-    if (y == 1)
-        printf ("You chose STONE.\n");
-    else if (y == 2)
-        printf ("You chose PAPER.\n");
-    else if(y == 3)
-        printf ("You chose SCISSORS.\n");
+    printf ("******\n");
+    if (user == 1)
+    {
+        printf ("Your choice: ROCK\n");
+    }
+    else if (user == 2)
+    {
+        printf ("Your choice: SCISSOR\n");
+    }
+    else if (user == 3)
+    {
+        printf ("Your choice: PAPER\n");
+    }
+}
+void compMove (int comp)
+{
+    if (comp == 1)
+    {
+        printf ("Computer's choice: ROCK\n");
+    }
+    else if (comp == 2)
+    {
+        printf ("Computer's choice: SCISSOR\n");
+    }
+    else if (comp == 3)
+    {
+        printf ("Computer's choice: PAPER\n");
+    }
     
 }
 
-void compChoice (int c)
+int main()
 {
-    srand (time(0));
-    c = rand() % (3-1+1)+1;
-    if (c == 1)
-        printf ("Computer chose STONE.\n");
-    else if (c == 2)
-        printf ("Computer chose PAPER.\n");
-    else if(c == 3)
-        printf ("Computer chose SCISSORS.\n");
-}
-
-void result (int y, int c)
-{
+    int user, comp;
     int count = 0;
-    if (y == c)
+    int win = 0, lose = 0, draw = 0;
+    while (1)
     {
-        printf ("Draw\n");
+        printf ("Chose your choice: \n");
+        printf ("1 for rock \t 2 for scissor \t 3 for paper \t 0 to exit \n");
+        scanf ("%d", &user);
+        userMove(user);
+        if (user == 0)
+            break;
+    
+        srand((int)time(0));
+        comp = rand() % (3-1+1)+1; //rand() % (max – min + 1) + min to recieve results form min to max
+        compMove (comp);
+        printf ("------------\n");
+        if (user == 1)
+        {
+            if (comp == 2)
+            {
+                printf ("You win\n");
+                count++;
+                win++;
+            }
+            else if (comp == 3)
+            {
+                printf ("You lose\n");
+                count--;
+                lose++;
+            }
+            else 
+            {
+                printf ("It's a draw\n");
+                draw++;
+            }
+        }
+        else if (user == 2)
+        {
+            if (comp == 3)
+            {
+                printf ("You win\n");
+                count++;
+                win++;
+            }
+            else if (comp == 1)
+            {
+                printf ("You lose\n");
+                count--;
+                lose++;
+            }
+            else 
+            {
+                printf ("It's a draw\n");
+                draw++;
+            }
+        }
+        else if (user == 3)
+        {
+            if (comp == 1)
+            {
+                printf ("You win\n");
+                count++;
+                win++;
+            }
+            else if (comp == 2)
+            {
+                printf ("You lose\n");
+                count--;
+                lose++;
+            }
+            else 
+            {
+                printf ("It's a draw\n");
+                draw++;
+            }
+        }
+        printf ("------------\n");
     }
-    if (y > c)
-    {
-        printf ("You win\n");
-        count++;
-    }
-    if (y < c)
-    {
-        printf ("You lose\n");
-        count--;
-    }
-}
 
-void finalResult (int count)
-{
-    if (count == 0)
-    {
-        printf ("Draw");
-    }
+
     if (count > 0)
     {
-        printf ("You win");
+        printf ("You beat the dump! With %d win, %d lose, %d draw", win, lose, draw);
     }
-    if (count < 0)
+    else if (count < 0)
     {
-        printf ("You lose");
+        printf ("You idiot! With %d win, %d lose, %d draw", win, lose, draw);
     }
-}
+    else
+    {
+        printf ("Dont know what to say! With %d win, %d lose, %d draw", win, lose, draw);
+    }
 
-int main ()
-{
-    printf ("You will play 3 times.\n");
-    int y, c;
-    //1st time
-    printf ("------------------------\n");
-    printf ("First round\n");
-    yourChoice (y);
-    compChoice (c);
-    result (y, c);
-    //2st time
-    printf ("------------------------\n");
-    printf ("Second round\n");
-    yourChoice (y);
-    compChoice (c);
-    result (y, c);
-    //3st time
-    printf ("------------------------\n");
-    printf ("Third round\n");
-    yourChoice (y);
-    compChoice (c);
-    result (y, c);
-    //Final
-    printf ("------------------------\n");
-    int count;
-    printf ("Final Result: \n");
-    finalResult (count);
     return 0;
 }
