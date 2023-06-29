@@ -75,7 +75,7 @@ int main()
 }
 ```
 
-*** SWAP VALUE AND POINTER
+### SWAP VALUE AND POINTER
 - When swapping the value of variables, their pointers still remained the same as before
 ```C
 //example 1
