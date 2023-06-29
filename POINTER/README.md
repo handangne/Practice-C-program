@@ -173,4 +173,70 @@ Address of y: 0x16fbbf3f4
 Address of z: 0x16fbbf3f0
 */
 ```
+- When swapping the pointers, the values at pointers are changed follow the changing of their pointers, but the orginial values are remained the same (because we just swap the pointers, not the values)
+```C
+#include <stdio.h>
+#include <stdlib.h>
+void swapPointers (int**, int**, int**);
+void swapPointers (int**a, int**b, int**c)
+{
+    int*temp;
+    temp = *a;
+    *a = *b;
+    *b = *c;
+    *c = temp;
+}
+int main()
+{
+  int x,y,z;
+  x = 5;
+  y = 10;
+  z = 20;
+  int temp;
+  int*a, *b, *c;
+  a = &x;
+  b = &y;
+  c = &z;
+  printf ("Value of x: %d\n", x);
+  printf ("Value of y: %d\n", y);
+  printf ("Value of z: %d\n", z);
+  printf ("Value at the pointer a: %d\n", *a);
+  printf ("Value at the pointer b: %d\n", *b);
+  printf ("Value at the pointer c: %d\n", *c);
+  printf ("Address of x: %p\n", a);
+  printf ("Address of y: %p\n", b);
+  printf ("Address of z: %p\n", c);
+  swapPointers (&a, &b, &c);
+  printf ("Value of x: %d\n", x);
+  printf ("Value of y: %d\n", y);
+  printf ("Value of z: %d\n", z);
+  printf ("Value at the pointer a: %d\n", *a);
+  printf ("Value at the pointer b: %d\n", *b);
+  printf ("Value at the pointer c: %d\n", *c);
+  printf ("Address of x: %p\n", a);
+  printf ("Address of y: %p\n", b);
+  printf ("Address of z: %p\n", c);
+  return 0;
+}
+/*
+Value of x: 5
+Value of y: 10
+Value of z: 20
+Value at the ponter a: 5
+Value at the ponter b: 10
+Value at the ponter c: 20
+Address of x: 0x16f7cb3f8
+Address of y: 0x16f7cb3f4
+Address of z: 0x16f7cb3f0
+Value of x: 5
+Value of y: 10
+Value of z: 20
+Value at the ponter a: 10
+Value at the ponter b: 20
+Value at the ponter c: 5
+Address of x: 0x16f7cb3f4
+Address of y: 0x16f7cb3f0
+Address of z: 0x16f7cb3f8
+*/
+```
 
