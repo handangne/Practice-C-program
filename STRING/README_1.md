@@ -24,5 +24,22 @@ char* ptr = "Hello World!"
 ```
 - ptr contains the address of the first character of the string literal.
 ![](./STRING_POINTER1.png)
+- "HELLO"[0] => 'H'
+- "HELLO"[1] => 'E'
+- "HELLO"[2] => 'L'
+- ...
+
+- Noted that, string literal can not be modified:
+```C
+char* p =  "HELLO"
+*p =  'M' /* not allowed */
+```
+- It is also known as string constant, it is allocated a read only memory. So we can not alter them.
+- The same pointer can point to some other string literals.
+
+## 2. STRING LITERAL VS CHARACTER CONSTANT
+- They are not the same
+- A string character is represented by a pointer to a character.
+- A character constant is represented by an integer ASCII code)
 
 
