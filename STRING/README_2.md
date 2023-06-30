@@ -160,6 +160,30 @@ int main()
 }
 ```
 - Be careful, your program may crash, because the size of the character array is just 10 like this:
+![](./STRING_GETS.png)
+
+### NOTED THAT
+- Both gets() and scanf() functions have no way to detec when the character array is full.
+- It may cause undefined behaviour and probably lead to buffer overflow error which eventually cause the program to crash.
+- Anyway, scanf() has the way to limit for the number of characters can be stored in the character array by using %ns.
+```C
+#include <stdio.h>
+int main()
+{
+    char a[10];
+    printf ("Enter the string: \n");
+    scanf ("%9s", a);
+    printf ("%s", a);
+    return 0;
+}
+/*
+Enter the string: 
+hellomynameiskaka
+hellomyna
+*/
+```
+
+
 
 
 
