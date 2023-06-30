@@ -239,4 +239,7 @@ Address of y: 0x16f7cb3f0
 Address of z: 0x16f7cb3f8
 */
 ```
+### POINTER ARITHMETIC
+#### sizeof (data type)
+- Data type: int (%d), signed char (%c), ...
 
