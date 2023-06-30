@@ -100,5 +100,66 @@ HELLO W
  HELLO
 */
 ```
-![](./STRING_PRINT1.png)    
+![](./STRING_PRINT1.png)   
+- In the second printf, the value of m is 6, so there are 6 rooms in this field.
+- All 5 characters will be displayed started from the right hand side (from "O" to "H".
+
+### USING PUTS
+```C
+puts ();
+```
+- It is a function declared in <stdio.h> library and is used to write string to the output screen.
+- It automatically writes a new line character after writing the string to the output screen.
+```C
+#include <stdio.h>
+int main()
+{
+    char *s = "HELLO";
+    puts(s);
+    puts(s);
+    return 0;
+}
+/*
+HELLO
+HELLO
+*/
+```
+## 5. READING STRING USING SCANF AND GETS FUNCTIONS
+### USING SCANF
+- To read a string into a string variable (character array).
+```C
+#include <stdio.h>
+int main()
+{
+    char a[10];
+    printf ("Enter the string: \n");
+    scanf ("%s", a); /* a is treated as a pointer to the first element of the array, so no need to put "&" */
+    printf ("%s", a);
+    return 0;
+}
+/*
+Enter the string: 
+this is a string
+this
+*/
+```
+- Only "this" is stored in this character array a.
+- scanf() does not stored white space characters in the string varible.
+
+### USING GETS
+- To read entire line of input
+```C
+#include <stdio.h>
+int main()
+{
+    char a[10];
+    printf ("Enter the string: \n");
+    gets(a);
+    printf ("%s", a);
+    return 0;
+}
+```
+- Be careful, your program may crash, because the size of the character array is just 10 like this:
+
+
 
