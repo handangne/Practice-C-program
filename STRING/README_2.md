@@ -79,3 +79,25 @@ int main()
 char s[] = "HELLO";
 ```
 - The compiler will automatically set aside 6 characters for s which is enough to store the string with an extra room for NULL.
+
+## 4. WRITING STRING USING PRINTF AND PUTS FUNCTIONS
+### USING PRINTF 
+- To print just a part of a string, we use " %.ns " with n is the numbers of characters to be displayed on the screen.
+- Addtionally, " %m.ns " with n is the numbers of characters to be displayed on the screen and m denotes the size of the field within which the string will be displayed.
+```C
+#include <stdio.h>
+int main()
+{
+    char* ptr  = "HELLO WORLD";
+    printf ("%.7s", ptr);
+    printf ("\n");
+    printf ("%6.5s", ptr);
+    
+    return 0;
+}
+/*
+HELLO W
+ HELLO
+*/
+```
+       
