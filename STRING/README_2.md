@@ -102,7 +102,7 @@ HELLO W
 ```
 ![](./STRING_PRINT1.png)   
 - In the second printf, the value of m is 6, so there are 6 rooms in this field.
-- All 5 characters will be displayed started from the right hand side (from "O" to "H".
+- All 5 characters will be displayed started from the right hand side (from "O" to "H").
 
 ### USING PUTS
 ```C
