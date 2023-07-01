@@ -39,7 +39,7 @@ char s[4] = "HELLO";
 ```C
 char s[5] = "HELLO";
 ```
-- No room for NULL
+- You see that there is no room for NULL.
 ```C
 #include <stdio.h>
 int main()
