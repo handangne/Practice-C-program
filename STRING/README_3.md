@@ -12,7 +12,7 @@
 
 ### ASCII CODE
 ASCII, stands for American Standard Code for Information Interchange. It is a 7-bit character code where each individual bit represents a unique character.
-![](./ASCII-Table-wide.svg.png)
+![](./ASCIICODE.png)
 
 ### FUNCTION 
 ```C
@@ -41,3 +41,30 @@ int main()
 Enter your string: Hello
 5 Hello
 */
+```
+## PUTCHAR FUNCTION IN C
+### putchar()
+- Prototype: int putchar (int ch)
+- It accepts an integer argument and returns an integer representing the character writing on the screen.
+- Remember that character is represented by binary form only, so there is no different if you write "int ch" instead of "char ch".
+```C
+#include <stdio.h>
+int main()
+{
+    int ch;
+    for (ch = 'A'; ch <= 'Z'; ch++)
+        putchar(ch);
+
+    return 0;
+}
+/*
+ABCDEFGHIJKLMNOPQRSTUVWXYZ
+*/
+```
+
+## STRINGS
+- If we have a printf function, we must be careful that:
+1. If a character is enclosed within a single quote like this: '\n', it is treated like a character: printf("%c", '\n').
+2. If a character is enclosed within a double quote like this: "\n", it is treated like a string: printf("%s", "\n").
+- So, putchar() function expects a character, hence we will pass the character like this: putchar('\n').
+- So, puts() function expects a string, hence we will pass the character like this: puts("\n").
