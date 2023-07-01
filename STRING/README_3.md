@@ -123,12 +123,128 @@ int main()
 
 int main()
 {
-    char s1[10] = "HELLO";
-    char s2[4];
+    char s1[10] = "HELLO"; //source
+    char s2[4]; //destination
     strncpy (s2, s1, sizeof(s2));
     printf ("%s", s2);
     return 0;
 }
 /* HELL */
 ```
+- Noted that, if the length of s1 is equal or greater than s2, strncpy will leave the string without the room for NULL character.
+```C
+#include <stdio.h>
+#include <string.h>
+
+int main()
+{
+    char s1[6] = "HELLO";
+    char s2[6];
+    strncpy (s2, s1, sizeof(s2));
+    s2[sizeof(s2) - 1] = '\0';
+    printf ("%s", s2);
+    return 0;
+}
+```
+### STRING LENGTH FUNCTION
+- Prototype: size_t strlen(const char* str);
+- size_t is an unsigned integer type of at least 16 bits.
+- It is used to determined the length of the given string.
+- We should pass the pointer to the first character of the string whose length we want to determine.
+- It does not count NULL character.
+```C
+//example 1
+#include <stdio.h>
+#include <string.h>
+
+int main()
+{
+    char* s = "HELLO WORLD";
+    printf ("%d", strlen(s));
+    return 0;
+}
+
+//example 2
+#include <stdio.h>
+#include <string.h>
+
+int main()
+{
+    char s[] = "HELLO WORLD";
+    printf ("%d", strlen(s));
+    return 0;
+}
+
+//example 3
+#include <stdio.h>
+#include <string.h>
+
+int main()
+{
+    char s[100] = "HELLO WORLD";
+    printf ("%d", strlen(s));
+    return 0;
+}
+```
+- It caculate the length of the string, not the length of the whole array.
+
+### STRING CONCATENATE FUNCTION
+- Prototype: char* strcat(char* str1, const char* str2).
+- It appends the content of the string str2 at the end of the string str1.
+- It returns the pointer to the resulting string str1.
+```C
+#include <stdio.h>
+#include <string.h>
+
+int main()
+{
+    char s1[100], s2[100];
+    strcpy (s1, "HELLO ");
+    strcpy (s2, "everyone here!");
+    strcat (s1, s2);
+    printf ("%s", s1);
+    return 0;
+}
+/* HELLO everyone here! */
+```
+- If the length of s1 is not long enough to accomodate the additional characters of s2, it will lead to undefined behavior.
+```C
+#include <stdio.h>
+#include <string.h>
+
+int main()
+{
+    char s1[10], s2[100];
+    strcpy (s1, "HELLO ");
+    strcpy (s2, "everyone here!");
+    strcat (s1, s2);
+    printf ("%s", s1);
+    return 0;
+}
+/*
+zsh: trace trap
+*/
+```
+
+- strncat is a safer version.
+- It apppends limited number of characters specified by the third argument  passed to it.
+- It automatically add the room for NULL character.
+```C
+#include <stdio.h>
+#include <string.h>
+
+int main()
+{
+    char s1[5], s2[100];
+    strcpy (s1, "HE");
+    strcpy (s2, "LLO!");
+    strncat (s1, s2, sizeof(s1) - strlen(s1) - 1);
+    printf ("%s", s1);
+    return 0;
+}
+/* HELL */
+```
+
+
+
 
