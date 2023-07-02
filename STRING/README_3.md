@@ -245,6 +245,59 @@ int main()
 /* HELL */
 ```
 
+### STRING COMPARISION FUNCTION
+- Prototype: int strcmp(const char* s1, const char* s2).
+- If s1 < s2, it returns value less than 0.
+- If s1 > s2, it returns value greater than 0.
+- If s1 = s2, it return value equal 0.
+#### ATTENTION
+- Upper case letters have the ASCII code less than lower case letters. (65-90 < 97-122)
+- Digits are less than letters.
+- Spaces are less than all printing characters.
+#### CONDITION
+strcmp compare (s1 < s2) if either one of the following condition is satified:
+1. The first characters i1 and i2 of s1 and s2 are the same and (i1 + 1) < (i2 + 1)
+```C
+\\example
+#include <stdio.h>
+#include <string.h>
+
+int main()
+{
+    char *s1 = "abcd";
+    char *s2 = "abce";
+    if (strcmp(s1,s2)<0)
+        printf ("s1 is less than s2");
+    else
+        printf ("s2 is less than s2");
+
+    return 0;
+}
+/*
+s1 is less than s2
+*/
+
+\\example
+#include <stdio.h>
+#include <string.h>
+
+int main()
+{
+    char *s1 = "bace";
+    char *s2 = "abce";
+    if (strcmp(s1,s2)<0)
+        printf ("s1 is less than s2");
+    else
+        printf ("s1 is greater than or equal s2");
+
+    return 0;
+}
+/*
+s1 is greater than or equal s2
+*/
+
+
+
 
 
 
