@@ -256,7 +256,7 @@ int main()
 - Spaces are less than all printing characters.
 #### CONDITION
 strcmp compare (s1 < s2) if either one of the following condition is satified:
-1. The first characters i1 and i2 of s1 and s2 are the same and (i1 + 1) < (i2 + 1)
+1. When the first characters i1 and i2 of s1 and s2 are the same and (i1 + 1) < (i2 + 1)
 ```C
 \\example
 #include <stdio.h>
@@ -283,6 +283,24 @@ s1 is less than s2
 
 int main()
 {
+    char *s1 = "abce";
+    char *s2 = "bbce";
+    if (strcmp(s1,s2)<0)
+        printf ("s1 is less than s2");
+    else
+        printf ("s1 is greater than or equal s2");
+    return 0;
+}
+/*
+s1 is less than s2
+*/
+
+\\example
+#include <stdio.h>
+#include <string.h>
+
+int main()
+{
     char *s1 = "bace";
     char *s2 = "abce";
     if (strcmp(s1,s2)<0)
@@ -295,6 +313,51 @@ int main()
 /*
 s1 is greater than or equal s2
 */
+
+\\example
+#include <stdio.h>
+#include <string.h>
+
+int main()
+{
+    char *s1 = "abce";
+    char *s2 = "abce";
+    if (strcmp(s1,s2)<0)
+        printf ("s1 is less than s2");
+    else
+        printf ("s1 is greater than or equal s2");
+    return 0;
+}
+/*
+s1 is greater than or equal s2
+*/
+```
+2. All the characters of s1 are matching with s2 but s1 is shorter than s2
+```C
+#include <stdio.h>
+#include <string.h>
+
+int main()
+{
+    char *s1 = "abc";
+    char *s2 = "abce";
+    if (strcmp(s1,s2)<0)
+        printf ("s1 is less than s2");
+    else
+        printf ("s1 is greater than or equal s2");
+    return 0;
+}
+/*
+s1 is less than s2
+*/
+```
+### ARRAY OF STRING
+#### 2 dimensional array
+```C
+char fruits[][12] = { "2 oranges", "2 apples", "3 bananas", "1 pineapple" };
+```
+
+
 
 
 
